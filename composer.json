@@ -17,6 +17,7 @@
       "src/Differ.php"
     ]
   },
+  "minimum-stability": "dev",
   "require": {
     "docopt/docopt": "^1.0"
   }
