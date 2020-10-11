@@ -1,13 +1,23 @@
 {
-    "name": "cabyca/php-project-lvl2",
-    "description": "php-project-lvl2",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "cabyca",
-            "email": "cabyca@yandex.ru"
-        }
-    ],
-    "require": {}
+  "name": "cabyca/php-project-lvl2",
+  "description": "php-project-lvl2",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "cabyca",
+      "email": "cabyca@yandex.ru"
+    }
+  ],
+  "bin": [
+    "bin/gendiff"
+  ],
+  "autoload": {
+    "files": [
+      "src/Differ.php"
+    ]
+  },
+  "require": {
+    "docopt/docopt": "^1.0"
+  }
 }
