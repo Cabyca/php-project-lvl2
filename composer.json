@@ -3,6 +3,9 @@
   "description": "php-project-lvl2",
   "type": "project",
   "license": "MIT",
+  "scripts": {
+    "test": "phpunit tests"
+  },
   "authors": [
     {
       "name": "cabyca",
@@ -17,8 +20,10 @@
       "src/Differ.php"
     ]
   },
-  "minimum-stability": "dev",
   "require": {
     "docopt/docopt": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.1.3"
   }
 }
