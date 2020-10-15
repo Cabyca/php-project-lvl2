@@ -12,18 +12,7 @@ if (file_exists($autoloadPath1)) {
   require_once $autoloadPath2;
 }
 
-switch ($argc) {
-  case "3":
-    //$pathToFile1 = '/home/alex/php-project-lvl2/' . $argv[1];
-    //$pathToFile2 = '/home/alex/php-project-lvl2/' . $argv[2];
-    $pathToFile1 = dirname(__DIR__, 1) . '/' . $argv[1];
-    $pathToFile2 = dirname(__DIR__, 1) . '/' . $argv[2];
-
-    $diff = genDiff($pathToFile1, $pathToFile2);
-    print_r($diff);
-    break;
-  default:
-    $doc = <<<'DOCOPT'
+$doc = <<<'DOCOPT'
 Generate diff
 
 Usage:
@@ -37,8 +26,9 @@ Options:
   --format <fmt>                Report format [default: stylish]
 DOCOPT;
 
-    $result = Docopt::handle($doc, array('version' => '1.0.0rc2'));
+$args = Docopt::handle($doc, array('version' => '1.0.0rc2'));
 
-    foreach ($result as $k => $v)
-      echo $k . ': ' . json_encode($v) . PHP_EOL;
-}
+//print_r($args);
+
+$diff = genDiff($args['<firstFile>'], $args['<secondFile>']);
+print_r($diff);

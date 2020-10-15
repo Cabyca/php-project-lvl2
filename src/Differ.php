@@ -4,6 +4,8 @@ namespace Differ;
 
 function genDiff($pathToFile1, $pathToFile2)
 {
+    $pathToFile1 = dirname(__DIR__, 1) . '/' . $pathToFile1;
+    $pathToFile2 = dirname(__DIR__, 1) . '/' . $pathToFile2;
 
     $data1 = json_decode(file_get_contents($pathToFile1), true);
     ksort($data1);
