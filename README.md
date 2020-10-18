@@ -1,3 +1,4 @@
+![PHP CI](https://github.com/Cabyca/php-project-lvl2/workflows/PHP%20CI/badge.svg)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6b20d40ef951e714bf45/test_coverage)](https://codeclimate.com/github/Cabyca/php-project-lvl2/test_coverage)
 
 # php-project-lvl2
