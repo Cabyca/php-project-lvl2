@@ -2,12 +2,12 @@
 
 namespace Differ;
 
-function genDiff($pathToFile1, $pathToFile2)
+function genDiff(string $pathToFile1, string $pathToFile2): string
 {
     $pathToFile1 = dirname(__DIR__, 1) . '/' . $pathToFile1;
     $pathToFile2 = dirname(__DIR__, 1) . '/' . $pathToFile2;
 
-    $data1 = json_decode(file_get_contents($pathToFile1), true);
+    $data1 = json_decode((string) file_get_contents($pathToFile1), true);
     ksort($data1);
     foreach ($data1 as $key => $value) {
         if (is_bool($value)) {
@@ -15,7 +15,7 @@ function genDiff($pathToFile1, $pathToFile2)
         }
     }
 
-    $data2 = json_decode(file_get_contents($pathToFile2), true);
+    $data2 = json_decode((string) file_get_contents($pathToFile2), true);
     ksort($data2);
     foreach ($data2 as $key => $value) {
         if (is_bool($value)) {
@@ -29,11 +29,9 @@ function genDiff($pathToFile1, $pathToFile2)
     $differenceResult = [];
 
     foreach ($dataСonsolidation as $key => $value) {
-
         if (!array_key_exists($key, $data2)) {
             $differenceResult[] = "  - {$key}: {$value}" . PHP_EOL;
         }
-
         if (array_key_exists($key, $data2)) {
             if (!array_key_exists($key, $data1)) {
                 $differenceResult[] = "  + {$key}: {$value}" . PHP_EOL;
@@ -46,6 +44,5 @@ function genDiff($pathToFile1, $pathToFile2)
             }
         }
     }
-
-    return '{' . PHP_EOL . implode("", $differenceResult) . '}' . PHP_EOL;
+    return '{' . PHP_EOL . implode("", $differenceResult) . '}';
 }
