@@ -2,12 +2,15 @@
 
 namespace Differ;
 
-function genDiff(string $pathToFile1, string $pathToFile2): string
-{
-    $pathToFile1 = dirname(__DIR__, 1) . '/' . $pathToFile1;
-    $pathToFile2 = dirname(__DIR__, 1) . '/' . $pathToFile2;
+use function Parsers\parsers;
 
-    $data1 = json_decode((string) file_get_contents($pathToFile1), true);
+function genDiff($file1, $file2): string
+{
+    $resultParsers = parsers($file1, $file2);
+
+    $data1 = $resultParsers[0];
+    $data2 = $resultParsers[1];
+
     ksort($data1);
     foreach ($data1 as $key => $value) {
         if (is_bool($value)) {
@@ -15,7 +18,6 @@ function genDiff(string $pathToFile1, string $pathToFile2): string
         }
     }
 
-    $data2 = json_decode((string) file_get_contents($pathToFile2), true);
     ksort($data2);
     foreach ($data2 as $key => $value) {
         if (is_bool($value)) {
