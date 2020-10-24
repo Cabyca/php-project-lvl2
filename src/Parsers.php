@@ -4,7 +4,7 @@ namespace Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parsers(string $file1, string $file2): array
+function parsers(string $file1, string $file2)
 {
     $data1 = '';
     $data2 = '';
@@ -22,5 +22,5 @@ function parsers(string $file1, string $file2): array
         $data2 = Yaml::parseFile($pathToFile2);
     }
 
-    return (array) [$data1, $data2];
+    return [$data1, $data2];
 }
