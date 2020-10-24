@@ -4,7 +4,7 @@ namespace Differ;
 
 use function Parsers\parsers;
 
-function genDiff($file1, $file2): string
+function genDiff(string $file1, string $file2): string
 {
     $resultParsers = parsers($file1, $file2);
 

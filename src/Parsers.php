@@ -6,6 +6,9 @@ use Symfony\Component\Yaml\Yaml;
 
 function parsers(string $file1, string $file2): array
 {
+    $data1 = '';
+    $data2 = '';
+
     $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/' . $file1;
     $pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/' . $file2;
     $extensionFile1 = pathinfo($pathToFile1, PATHINFO_EXTENSION);
@@ -19,5 +22,5 @@ function parsers(string $file1, string $file2): array
         $data2 = Yaml::parseFile($pathToFile2);
     }
 
-    return [$data1, $data2];
+    return (array) [$data1, $data2];
 }
