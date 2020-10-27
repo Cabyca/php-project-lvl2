@@ -23,6 +23,6 @@ function parsers(string $file1, string $file2): iterable
     }
 
     $data = [$data1, $data2];
- 
+
     return $data;
 }

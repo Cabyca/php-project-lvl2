@@ -6,10 +6,7 @@ use function Parsers\parsers;
 
 function genDiff(string $file1, string $file2): string
 {
-    $resultParsers = parsers($file1, $file2);
-
-    $data1 = $resultParsers[0];
-    $data2 = $resultParsers[1];
+    [$data1, $data2] = parsers($file1, $file2);
 
     ksort($data1);
     foreach ($data1 as $key => $value) {
