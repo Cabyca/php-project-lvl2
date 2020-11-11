@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":142:{a:2:{s:7:"defects";a:0:{}s:5:"times";a:2:{s:33:"Differ\Tests\DifferTest::testJson";d:0.253;s:33:"Differ\Tests\DifferTest::testYaml";d:0.063;}}}

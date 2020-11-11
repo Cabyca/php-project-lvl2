@@ -20,7 +20,8 @@
       "src/Differ.php",
       "src/Parsers.php",
       "src/BuildingDiff.php",
-      "src/Formatter.php"
+      "src/Formatter.php",
+      "src/BooleanConversion.php"
     ],
     "psr-4": {
       "Differ\\Tests\\": "tests"

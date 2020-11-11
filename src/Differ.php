@@ -12,7 +12,5 @@ function genDiff(string $file1, string $file2): string
 
     $ASTTree = bildingDiff($data1, $data2);
 
-    print_r($ASTTree);
-
     return formatter($ASTTree, $depth = 0);
 }
