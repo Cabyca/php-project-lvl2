@@ -13,3 +13,7 @@
 Пример работы пакета с файлами формата YAML:
 
 [![asciicast](https://asciinema.org/a/368388.svg)](https://asciinema.org/a/368388)
+
+Пример работы пакета для вложенных структур:
+
+[![asciicast](https://asciinema.org/a/372222.svg)](https://asciinema.org/a/372222)
