@@ -17,3 +17,7 @@
 Пример работы пакета для вложенных структур:
 
 [![asciicast](https://asciinema.org/a/372222.svg)](https://asciinema.org/a/372222)
+
+Пример работы пакета с применением плоского формата вывода plain:
+
+[![asciicast](https://asciinema.org/a/4mvxpSmOYkPZQMjyhrdAzhTd5.svg)](https://asciinema.org/a/4mvxpSmOYkPZQMjyhrdAzhTd5)
