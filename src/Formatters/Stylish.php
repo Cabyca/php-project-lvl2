@@ -1,10 +1,10 @@
 <?php
 
-namespace Formatter;
+namespace Stylish;
 
 use function BooleanConversion\booleanConversion;
 
-function formatter(array $astTree, int $depth)
+function stylish(array $astTree, int $depth)
 {
 
     $indent = str_repeat(" ", $depth);
@@ -13,7 +13,7 @@ function formatter(array $astTree, int $depth)
         switch ($node['type']) {
             case 'nested':
                 $depth = $depth + 4;
-                return $indent . "    " . $node['key'] . ": " . formatter($node['children'], $depth) . PHP_EOL;
+                return $indent . "    " . $node['key'] . ": " . stylish($node['children'], $depth) . PHP_EOL;
             case 'added':
                 $depth = $depth + 4;
                 $typeOfValueOfNode = (is_array($node['value'])) ? helper($node['value'], $depth) : $node['value'];
