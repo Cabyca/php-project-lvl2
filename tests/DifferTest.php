@@ -43,4 +43,22 @@ class DifferTest extends TestCase
 
         $this->assertEquals($dataDiff, $dataYaml);
     }
+
+    public function testJsonFormatJson(): void
+    {
+        $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffJson');
+
+        $dataJson = genDiff('file3.json', 'file4.json', 'json');
+
+        $this->assertEquals($dataDiff, $dataJson);
+    }
+
+    public function testYamlFormatJson(): void
+    {
+        $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffJson');
+
+        $dataYaml = genDiff('file3.yml', 'file4.yml', 'json');
+
+        $this->assertEquals($dataDiff, $dataYaml);
+    }
 }

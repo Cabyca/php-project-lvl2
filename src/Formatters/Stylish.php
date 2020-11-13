@@ -10,25 +10,24 @@ function stylish(array $astTree, int $depth)
     $indent = str_repeat(" ", $depth);
 
     $result = array_map(function ($node) use ($depth, $indent) {
+
+
+        $depth += 4;
+
         switch ($node['type']) {
             case 'nested':
-                $depth = $depth + 4;
                 return $indent . "    " . $node['key'] . ": " . stylish($node['children'], $depth) . PHP_EOL;
             case 'added':
-                $depth = $depth + 4;
                 $typeOfValueOfNode = (is_array($node['value'])) ? helper($node['value'], $depth) : $node['value'];
                 return $indent . "  + " . $node['key'] . ": " . booleanConversion($typeOfValueOfNode) . PHP_EOL;
             case 'removed':
-                $depth = $depth + 4;
                 $typeOfValueOfNode = (is_array($node['value'])) ? helper($node['value'], $depth) : $node['value'];
                 return $indent . "  - " . $node['key'] . ": " . booleanConversion($typeOfValueOfNode) . PHP_EOL;
             case 'changed':
-                $depth = $depth + 4;
                 $typeOfValueOfNode1 = (is_array($node['value'][0])) ? helper($node['value'][0], $depth) : $node['value'][0];
                 $typeOfValueOfNode2 = (is_array($node['value'][1])) ? helper($node['value'][1], $depth) : $node['value'][1];
                 return $indent . "  - " . $node['key'] . ": " . booleanConversion($typeOfValueOfNode1) . PHP_EOL . $indent . "  + " . $node['key'] . ": " . booleanConversion($typeOfValueOfNode2) . PHP_EOL;
             default:
-                $depth = $depth + 4;
                 $typeOfValueOfNode = (is_array($node['value'])) ? helper($node['value'], $depth) : $node['value'];
                 return $indent . "    " . $node['key'] . ": " . booleanConversion($typeOfValueOfNode) . PHP_EOL;
         }

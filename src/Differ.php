@@ -12,7 +12,7 @@ function genDiff(string $file1, string $file2, $formatName): string
 
     $ASTTree = bildingDiff($data1, $data2);
 
-    $resultString = formatters($ASTTree, $formatName);
+    $resultDiff = formatters($ASTTree, $formatName);
 
-    return $resultString;
+    return $resultDiff;
 }

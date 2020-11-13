@@ -13,9 +13,7 @@ function plain($astTree, $nestedProperty)
 
             case 'nested':
 
-                if (is_array($node['children'])) {
-                    $nestedProperty .=  $node['key'] . ".";
-                }
+                $nestedProperty .=  $node['key'] . ".";
 
                 return plain($node['children'], $nestedProperty);
 
