@@ -21,3 +21,7 @@
 Пример работы пакета с применением плоского формата вывода plain:
 
 [![asciicast](https://asciinema.org/a/4mvxpSmOYkPZQMjyhrdAzhTd5.svg)](https://asciinema.org/a/4mvxpSmOYkPZQMjyhrdAzhTd5)
+
+Пример работы пакета с применением формата json:
+
+[![asciicast](https://asciinema.org/a/Kd27DSC22IefOeoe35z12Jxr1.svg)](https://asciinema.org/a/Kd27DSC22IefOeoe35z12Jxr1)
