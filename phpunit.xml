@@ -8,7 +8,7 @@
          processIsolation="false"
          stopOnFailure="true"
          bootstrap="vendor/autoload.php"
-         cacheResult='false';
+         cacheResult='false'
 >
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
