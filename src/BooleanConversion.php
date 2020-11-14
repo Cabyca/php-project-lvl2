@@ -1,6 +1,6 @@
 <?php
 
-namespace BooleanConversion;
+namespace Differ\BooleanConversion;
 
 function booleanConversion($value, $plain = 0)
 {

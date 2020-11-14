@@ -1,6 +1,6 @@
 <?php
 
-namespace BildingDiff;
+namespace Differ\BildingDiff;
 
 function bildingDiff(array $data1, array $data2): array
 {

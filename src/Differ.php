@@ -1,10 +1,10 @@
 <?php
 
-namespace Differ;
+namespace Differ\Differ;
 
-use function Parsers\parsers;
-use function BildingDiff\bildingDiff;
-use function Formatters\formatters;
+use function Differ\Parsers\parsers;
+use function Differ\BildingDiff\bildingDiff;
+use function Differ\Formatters\formatters;
 
 function genDiff(string $file1, string $file2, $formatName): string
 {

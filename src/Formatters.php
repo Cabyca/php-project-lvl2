@@ -1,10 +1,10 @@
 <?php
 
-namespace Formatters;
+namespace Differ\Formatters;
 
-use function Stylish\stylish;
-use function Plain\plain;
-use function Json\json;
+use function Differ\Stylish\stylish;
+use function Differ\Plain\plain;
+use function Differ\Json\json;
 
 function formatters($astTree, $formatName = 'stylish')
 {

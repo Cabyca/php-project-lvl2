@@ -1,6 +1,6 @@
 <?php
 
-namespace Json;
+namespace Differ\Json;
 
 function json(array $astTree)
 {
