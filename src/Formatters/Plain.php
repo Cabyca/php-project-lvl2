@@ -21,9 +21,9 @@ function plain($astTree, $nestedProperty)
             case 'changed':
                 $typeOfValueOfNode1 = (is_array($node['value'][0])) ? '[complex value]' : $node['value'][0];
                 $typeOfValueOfNode2 = (is_array($node['value'][1])) ? '[complex value]' : $node['value'][1];
-                $valueOfChangedNode1 = "From " . booleanConversion($typeOfValueOfNode1, $plain = 1);
-                $valueOfChangedNode2 = " to " . booleanConversion($typeOfValueOfNode2, $plain = 1) . PHP_EOL;   
-                return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $valueOfChangedNode1 . $valueOfChangedNode2;
+                $node1 = "From " . booleanConversion($typeOfValueOfNode1, $plain = 1);
+                $node2 = " to " . booleanConversion($typeOfValueOfNode2, $plain = 1) . PHP_EOL;
+                return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $node1 . $node2;
             case 'unchanged':
                 return "Property '" . $nestedProperty . $node['key'] . "' unchanged" . PHP_EOL;
         }
