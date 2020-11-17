@@ -28,7 +28,8 @@ DOCOPT;
 
 $args = Docopt::handle($doc, array('version' => '1.0.0rc2'));
 
-//print_r($args);
+$pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/' . $args['<firstFile>'];
+$pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/' . $args['<secondFile>'];
 
-$diff = genDiff($args['<firstFile>'], $args['<secondFile>'], $args['--format']);
+$diff = genDiff($pathToFile1, $pathToFile2, $args['--format']);
 print_r($diff);
