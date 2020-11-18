@@ -12,7 +12,10 @@ class DifferTest extends TestCase
     {
         $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffStylish');
 
-        $dataJson = genDiff('file3.json', 'file4.json', 'stylish');
+        $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/file3.json';
+        $pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/file4.json';
+
+        $dataJson = genDiff($pathToFile1, $pathToFile2, 'stylish');
 
         $this->assertEquals($dataDiff, $dataJson);
     }
@@ -21,7 +24,10 @@ class DifferTest extends TestCase
     {
         $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffStylish');
 
-        $dataYaml = genDiff('file3.yml', 'file4.yml', 'stylish');
+        $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/file3.yml';
+        $pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/file4.yml';
+
+        $dataYaml = genDiff($pathToFile1, $pathToFile2, 'stylish');
 
         $this->assertEquals($dataDiff, $dataYaml);
     }
@@ -30,7 +36,10 @@ class DifferTest extends TestCase
     {
         $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffPlain');
 
-        $dataJson = genDiff('file3.json', 'file4.json', 'plain');
+        $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/file3.json';
+        $pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/file4.json';
+
+        $dataJson = genDiff($pathToFile1, $pathToFile2, 'plain');
 
         $this->assertEquals($dataDiff, $dataJson);
     }
@@ -39,7 +48,10 @@ class DifferTest extends TestCase
     {
         $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffPlain');
 
-        $dataYaml = genDiff('file3.yml', 'file4.yml', 'plain');
+        $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/file3.yml';
+        $pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/file4.yml';
+
+        $dataYaml = genDiff($pathToFile1, $pathToFile2, 'plain');
 
         $this->assertEquals($dataDiff, $dataYaml);
     }
@@ -48,7 +60,10 @@ class DifferTest extends TestCase
     {
         $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffJson');
 
-        $dataJson = genDiff('file3.json', 'file4.json', 'json');
+        $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/file3.json';
+        $pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/file4.json';
+
+        $dataJson = genDiff($pathToFile1, $pathToFile2, 'json');
 
         $this->assertEquals($dataDiff, $dataJson);
     }
@@ -57,7 +72,10 @@ class DifferTest extends TestCase
     {
         $dataDiff = file_get_contents(dirname(__DIR__) . '/' . 'tests/fixtures/diffJson');
 
-        $dataYaml = genDiff('file3.yml', 'file4.yml', 'json');
+        $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/file3.yml';
+        $pathToFile2 = dirname(__DIR__, 1) . '/tests/fixtures/file4.yml';
+
+        $dataYaml = genDiff($pathToFile1, $pathToFile2, 'json');
 
         $this->assertEquals($dataDiff, $dataYaml);
     }
