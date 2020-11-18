@@ -3,7 +3,6 @@
 namespace Differ\Parser;
 
 use Symfony\Component\Yaml\Yaml;
-
 use Exception;
 
 function parser($dataForParsing, $dataType)

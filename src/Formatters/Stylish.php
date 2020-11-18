@@ -3,7 +3,6 @@
 namespace Differ\Formatters\Stylish;
 
 use function Differ\BuildIndent\buildIndent;
-
 use function Differ\CheckForBoolean\checkForBoolean;
 
 function stylish(array $astTree, int $depth)
