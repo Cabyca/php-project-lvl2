@@ -1,10 +1,9 @@
 <?php
 
-namespace Differ\buildIndent;
+namespace Differ\BuildIndent;
 
-function buildIndent($depth)
+function buildIndent($depth, $quantityOfGaps)
 {
-    $quantityOfGaps = 4;
     $spaceMultiplier = $depth * $quantityOfGaps;
     return str_repeat(" ", $spaceMultiplier);
 }

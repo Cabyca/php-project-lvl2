@@ -2,20 +2,16 @@
 
 namespace Differ\Formatters;
 
-use function Differ\Stylish\stylish;
-use function Differ\Plain\plain;
-use function Differ\Json\json;
+use function Differ\Render\render;
 
-function formatters($astTree, $formatName = 'stylish')
+function chooseRenderForFormate($astTree, $formatName)
 {
     switch ($formatName) {
-        case 'stylish':
-            return stylish($astTree, $depth = 0);
         case 'plain':
-            return plain($astTree, $nestedProperty = '');
+            return render($astTree, $formatName = 'plain');
         case 'json':
-            return json($astTree);
+            return render($astTree, $formatName = 'json');
         default:
-            return 'Wrong format' . PHP_EOL;
+            return render($astTree, $formatName = 'stylish');
     }
 }

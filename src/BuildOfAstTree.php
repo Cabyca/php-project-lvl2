@@ -1,8 +1,8 @@
 <?php
 
-namespace Differ\BildingDiff;
+namespace Differ\BuildOfAstTree;
 
-function bildingDiff(array $data1, array $data2): array
+function buildOfAstTree(array $data1, array $data2): array
 {
 
     $keysData1 = array_keys($data1);
@@ -11,7 +11,7 @@ function bildingDiff(array $data1, array $data2): array
     sort($uniqueKeys);
 
 
-    $ASTTree = array_map(function ($key) use ($data1, $data2) {
+    $astTree = array_map(function ($key) use ($data1, $data2) {
 
         if (!array_key_exists($key, $data1)) {
             return ['key' => $key, 'type' => 'added', 'value' => $data2[$key]];
@@ -20,7 +20,7 @@ function bildingDiff(array $data1, array $data2): array
             return ['key' => $key, 'type' => 'removed', 'value' => $data1[$key]];
         }
         if (is_array($data1[$key]) && is_array($data2[$key])) {
-            return ['key' => $key, 'type' => 'nested', 'children' => bildingDiff($data1[$key], $data2[$key])];
+            return ['key' => $key, 'type' => 'nested', 'children' => buildOfAstTree($data1[$key], $data2[$key])];
         }
         if ($data1[$key] !== $data2[$key]) {
             return ['key' => $key, 'type' => 'changed', 'value' => [$data1[$key], $data2[$key]]];
@@ -28,5 +28,5 @@ function bildingDiff(array $data1, array $data2): array
         return ['key' => $key, 'type' => 'unchanged', 'value' => $data1[$key]];
     }, $uniqueKeys);
 
-    return array_values($ASTTree);
+    return array_values($astTree);
 }

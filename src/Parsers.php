@@ -1,10 +1,12 @@
 <?php
 
-namespace Differ\Parsers;
+namespace Differ\Parser;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parsers($dataForParsing, $dataType)
+use Exception;
+
+function parser($dataForParsing, $dataType)
 {
     switch ($dataType) {
         case 'json':
@@ -12,6 +14,6 @@ function parsers($dataForParsing, $dataType)
         case 'yml':
             return Yaml::parse($dataForParsing);
         default:
-            print_r(true);
+            throw new Exception("Unknown data type: $dataType");
     }
 }

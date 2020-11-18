@@ -1,8 +1,8 @@
 <?php
 
-namespace Differ\BooleanConversion;
+namespace Differ\CheckForBoolean;
 
-function booleanConversion($value, $plain = 0)
+function checkForBoolean($value, $plain = 0)
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
