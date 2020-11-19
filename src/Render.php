@@ -2,10 +2,11 @@
 
 namespace Differ\Render;
 
+use Exception;
+
 use function Differ\Formatters\Stylish\stylish;
 use function Differ\Formatters\Plain\plain;
 use function Differ\Formatters\Json\json;
-use Exception;
 
 function render($astTree, $formatName)
 {

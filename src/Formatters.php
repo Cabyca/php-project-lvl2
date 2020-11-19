@@ -2,8 +2,9 @@
 
 namespace Differ\Formatters;
 
-use function Differ\Render\render;
 use Exception;
+
+use function Differ\Render\render;
 
 function formatters($astTree, $formatName = 'stylish')
 {
