@@ -19,8 +19,10 @@ function plain($astTree, $nestedProperty)
             case 'removed':
                 return "Property '" . $nestedProperty . $node['key'] . "' was removed" . PHP_EOL;
             case 'changed':
-                $typeOfValueOfNode1 = (is_array($node['value'][0])) ? '[complex value]' : $node['value'][0];
-                $typeOfValueOfNode2 = (is_array($node['value'][1])) ? '[complex value]' : $node['value'][1];
+                $valueRemoved = $node['value']['valueRemoved'];
+                $valueAdded = $node['value']['valueAdd'];
+                $typeOfValueOfNode1 = (is_array($valueRemoved)) ? '[complex value]' : $valueRemoved;
+                $typeOfValueOfNode2 = (is_array($valueAdded)) ? '[complex value]' : $valueAdded;
                 $node1 = "From " . checkForBoolean($typeOfValueOfNode1, $plain = 1);
                 $node2 = " to " . checkForBoolean($typeOfValueOfNode2, $plain = 1) . PHP_EOL;
                 return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $node1 . $node2;

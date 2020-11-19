@@ -23,7 +23,8 @@ function buildOfAstTree(array $data1, array $data2): array
             return ['key' => $key, 'type' => 'nested', 'children' => buildOfAstTree($data1[$key], $data2[$key])];
         }
         if ($data1[$key] !== $data2[$key]) {
-            return ['key' => $key, 'type' => 'changed', 'value' => [$data1[$key], $data2[$key]]];
+            $unchangedValues = ['valueRemoved' => $data1[$key], 'valueAdd' => $data2[$key]];
+            return ['key' => $key, 'type' => 'changed', 'value' => $unchangedValues];
         }
         return ['key' => $key, 'type' => 'unchanged', 'value' => $data1[$key]];
     }, $uniqueKeys);

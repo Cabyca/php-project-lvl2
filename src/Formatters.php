@@ -3,15 +3,18 @@
 namespace Differ\Formatters;
 
 use function Differ\Render\render;
+use Exception;
 
-function chooseRenderForFormate($astTree, $formatName)
+function formatters($astTree, $formatName = 'stylish')
 {
     switch ($formatName) {
+        case 'stylish':
+            return render($astTree, $formatName);
         case 'plain':
             return render($astTree, $formatName = 'plain');
         case 'json':
             return render($astTree, $formatName = 'json');
         default:
-            return render($astTree, $formatName = 'stylish');
+            throw new Exception("Unknown formatter: $formatName");
     }
 }

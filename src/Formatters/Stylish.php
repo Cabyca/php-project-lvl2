@@ -2,7 +2,6 @@
 
 namespace Differ\Formatters\Stylish;
 
-use function Differ\BuildIndent\buildIndent;
 use function Differ\CheckForBoolean\checkForBoolean;
 
 function stylish(array $astTree, int $depth)
@@ -21,8 +20,8 @@ function stylish(array $astTree, int $depth)
                 $typeNode = nodeIsArray($node['value'], $depth);
                 return $indent . "  - " . $node['key'] . ": " . checkForBoolean($typeNode) . PHP_EOL;
             case 'changed':
-                $typeNode1 = nodeIsArray($node['value'][0], $depth);
-                $typeNode2 = nodeIsArray($node['value'][1], $depth);
+                $typeNode1 = nodeIsArray($node['value']['valueRemoved'], $depth);
+                $typeNode2 = nodeIsArray($node['value']['valueAdd'], $depth);
                 $valueOfChangedNode1 = $node['key'] . ": " . checkForBoolean($typeNode1) . PHP_EOL;
                 $valueOfChangedNode2 = $node['key'] . ": " . checkForBoolean($typeNode2);
                 return $indent . "  - " . $valueOfChangedNode1 . $indent . "  + " . $valueOfChangedNode2 . PHP_EOL;
@@ -34,17 +33,23 @@ function stylish(array $astTree, int $depth)
     return '{' . PHP_EOL . implode("", $result) . $indent . '}';
 }
 
-function nodeIsArray($value, $depth)
+function buildIndent($depth, $quantityOfGaps)
 {
-    return is_array($value) ? addTheNodeAsAnArray($value, $depth) : $value;
+    $spaceMultiplier = $depth * $quantityOfGaps;
+    return str_repeat(" ", $spaceMultiplier);
 }
 
-function addTheNodeAsAnArray($arr, $depth)
+function nodeIsArray($value, $depth)
+{
+    return is_array($value) ? addNodeAsArray($value, $depth) : $value;
+}
+
+function addNodeAsArray($arr, $depth)
 {
     $indent = buildIndent($depth, 4);
     $stringOfArray = array_map(function ($key, $item) use ($depth, $indent) {
         $depth += 1;
-        $typeOfValueOfNode = (is_array($item)) ? addTheNodeAsAnArray($item, $depth) : $item;
+        $typeOfValueOfNode = (is_array($item)) ? addNodeAsArray($item, $depth) : $item;
         return $indent . "    " . "{$key}: " . checkForBoolean($typeOfValueOfNode) . PHP_EOL;
     }, array_keys($arr), $arr);
     return '{' . PHP_EOL . implode("", $stringOfArray) . $indent . '}';

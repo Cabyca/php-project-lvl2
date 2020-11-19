@@ -4,26 +4,19 @@ namespace Differ\Differ;
 
 use function Differ\Parser\parser;
 use function Differ\BuildOfAstTree\buildOfAstTree;
-use function Differ\Formatters\chooseRenderForFormate;
+use function Differ\Formatters\formatters;
+use function Differ\Getdata\getData;
 
 function genDiff(string $pathToFile1, string $pathToFile2, $formatName): string
 {
-    $dataForParsing1 = file_get_contents($pathToFile1);
-    $dataForParsing2 = file_get_contents($pathToFile2);
-    $extensionFile1 = pathinfo($pathToFile1, PATHINFO_EXTENSION);
-    $extensionFile2 = pathinfo($pathToFile2, PATHINFO_EXTENSION);
+    [$dataParsing1, $dataParsing2, $extensionFile1, $extensionFile2] = getData($pathToFile1, $pathToFile2);
 
-    if ($extensionFile1 === 'json' && $extensionFile2 === 'json') {
-        $data1 = parser($dataForParsing1, $dataType = 'json');
-        $data2 = parser($dataForParsing2, $dataType = 'json');
-    } elseif ($extensionFile1 === 'yml' && $extensionFile2 === 'yml') {
-        $data1 = parser($dataForParsing1, $dataType = 'yml');
-        $data2 = parser($dataForParsing2, $dataType = 'yml');
-    }
+    $data1 = parser($dataParsing1, $extensionFile1);
+    $data2 = parser($dataParsing2, $extensionFile2);
 
     $astTree = buildOfAstTree($data1, $data2);
 
-    $resultOfDiff = chooseRenderForFormate($astTree, $formatName);
+    $resultOfDiff = formatters($astTree, $formatName);
 
     return $resultOfDiff;
 }
