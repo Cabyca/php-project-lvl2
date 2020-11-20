@@ -26,8 +26,6 @@ Options:
   --format <fmt>                Report format [default: stylish]
 DOCOPT;
 
-//https://github.com/Cabyca/php-project-lvl2/workflows/PHP%20CI/badge.svg
-
 $args = Docopt::handle($doc, array('version' => '1.0.0rc2'));
 
 $pathToFile1 = dirname(__DIR__, 1) . '/tests/fixtures/' . $args['<firstFile>'];

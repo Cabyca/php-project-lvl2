@@ -11,7 +11,6 @@ function parser($data, $dataType)
         case 'json':
             return json_decode($data, true);
         case 'yml':
-            return Yaml::parse($data);
         case 'yaml':
             return Yaml::parse($data);
         default:
