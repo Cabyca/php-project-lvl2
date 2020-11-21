@@ -1,8 +1,8 @@
 <?php
 
-namespace Differ\BuildOfAstTree;
+namespace Differ\BuildAstTree;
 
-function buildOfAstTree(array $data1, array $data2): array
+function buildAstTree(array $data1, array $data2): array
 {
 
     $keysData1 = array_keys($data1);
@@ -20,7 +20,7 @@ function buildOfAstTree(array $data1, array $data2): array
             return ['key' => $key, 'type' => 'removed', 'value' => $data1[$key]];
         }
         if (is_array($data1[$key]) && is_array($data2[$key])) {
-            return ['key' => $key, 'type' => 'nested', 'children' => buildOfAstTree($data1[$key], $data2[$key])];
+            return ['key' => $key, 'type' => 'nested', 'children' => buildAstTree($data1[$key], $data2[$key])];
         }
         if ($data1[$key] !== $data2[$key]) {
             $unchangedValues = ['valueRemoved' => $data1[$key], 'valueAdd' => $data2[$key]];

@@ -8,7 +8,7 @@ use function Differ\Formatters\Stylish\stylish;
 use function Differ\Formatters\Plain\plain;
 use function Differ\Formatters\Json\json;
 
-function render($astTree, $formatName = 'stylish')
+function render($astTree, $formatName)
 {
     switch ($formatName) {
         case 'stylish':

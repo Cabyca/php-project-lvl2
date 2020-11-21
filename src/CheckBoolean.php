@@ -1,8 +1,8 @@
 <?php
 
-namespace Differ\CheckForBoolean;
+namespace Differ\CheckBoolean;
 
-function checkForBoolean($value, $plain = 0)
+function checkBoolean($value, $plain = 0)
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
