@@ -2,12 +2,10 @@
 
 namespace Differ\GetData;
 
-use Exception;
-
 function getData($pathToFile)
 {
     if (!file_exists($pathToFile)) {
-        throw new Exception("The file does not exist: $pathToFile");
+        throw new \Exception("The file does not exist: $pathToFile");
     }
 
     $dataParsing = file_get_contents($pathToFile);

@@ -20,12 +20,11 @@
       "src/Differ.php",
       "src/Parser.php",
       "src/BuildAstTree.php",
-      "src/Formatters.php",
+      "src/Formatters/Formatters.php",
       "src/Formatters/Stylish.php",
       "src/Formatters/Plain.php",
       "src/Formatters/Json.php",
       "src/CheckBoolean.php",
-      "src/Render.php",
       "src/GetData.php"
     ],
     "psr-4": {

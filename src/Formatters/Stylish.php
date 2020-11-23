@@ -4,7 +4,12 @@ namespace Differ\Formatters\Stylish;
 
 use function Differ\CheckBoolean\checkBoolean;
 
-function stylish(array $astTree, int $depth)
+function render($astTree)
+{
+    return stylish($astTree);
+}
+
+function stylish(array $astTree, int $depth = 0)
 {
     $indent = buildIndent($depth, 4);
 

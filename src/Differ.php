@@ -7,7 +7,7 @@ use function Differ\BuildAstTree\buildAstTree;
 use function Differ\Formatters\formatters;
 use function Differ\Getdata\getData;
 
-function genDiff(string $pathToFile1, string $pathToFile2, $formatName): string
+function genDiff(string $pathToFile1, string $pathToFile2, $formatName = 'stylish'): string
 {
     [$dataParsing1, $extensionFile1] = getData($pathToFile1);
     [$dataParsing2, $extensionFile2] = getData($pathToFile2);

@@ -3,7 +3,6 @@
 namespace Differ\Parser;
 
 use Symfony\Component\Yaml\Yaml;
-use Exception;
 
 function parser($data, $dataType)
 {
@@ -14,6 +13,6 @@ function parser($data, $dataType)
         case 'yaml':
             return Yaml::parse($data);
         default:
-            throw new Exception("Unknown data type: $dataType");
+            throw new \Exception("Unknown data type: $dataType");
     }
 }
