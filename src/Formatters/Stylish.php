@@ -46,7 +46,7 @@ function buildIndent($depth, $quantityOfGaps)
 
 function nodeIsArray($value, $depth)
 {
-    return is_array($value) ? addNodeAsArray($value, $depth) : $value;
+    return is_object($value) ? addNodeAsArray($value, $depth) : $value;
 }
 
 function addNodeAsArray($arr, $depth)
@@ -54,8 +54,8 @@ function addNodeAsArray($arr, $depth)
     $indent = buildIndent($depth, 4);
     $stringOfArray = array_map(function ($key, $item) use ($depth, $indent) {
         $depth += 1;
-        $typeOfValueOfNode = (is_array($item)) ? addNodeAsArray($item, $depth) : $item;
+        $typeOfValueOfNode = (is_object($item)) ? addNodeAsArray($item, $depth) : $item;
         return $indent . "    " . "{$key}: " . checkBoolean($typeOfValueOfNode) . PHP_EOL;
-    }, array_keys($arr), $arr);
+    }, array_keys(get_object_vars($arr)), get_object_vars($arr));
     return '{' . PHP_EOL . implode("", $stringOfArray) . $indent . '}';
 }

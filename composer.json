@@ -20,7 +20,7 @@
       "src/Differ.php",
       "src/Parser.php",
       "src/BuildAstTree.php",
-      "src/Formatters/Formatters.php",
+      "src/Formatters.php",
       "src/Formatters/Stylish.php",
       "src/Formatters/Plain.php",
       "src/Formatters/Json.php",
@@ -33,7 +33,8 @@
   },
   "require": {
     "docopt/docopt": "^1.0",
-    "symfony/yaml": "^5.1"
+    "symfony/yaml": "^5.1",
+    "funct/funct": "^1.5"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.4",

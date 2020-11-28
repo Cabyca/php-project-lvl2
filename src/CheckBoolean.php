@@ -13,5 +13,8 @@ function checkBoolean($value, $plain = 0)
     if ($plain === 1 && $value === '') {
         return $value = "''";
     }
+    if (!is_object($value)) {
+        return (string) $value;
+    }
     return $value;
 }

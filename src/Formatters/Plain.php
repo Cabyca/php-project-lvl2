@@ -18,23 +18,29 @@ function plain($astTree, $nestedProperty = '')
                 $nestedProperty .=  $node['key'] . ".";
                 return plain($node['children'], $nestedProperty);
             case 'added':
-                $typeOfValueOfNode = (is_array($node['value'])) ? '[complex value]' : $node['value'];
-                $valueOfAddedNode = checkBoolean($typeOfValueOfNode, 1) . PHP_EOL;
+                $typeOfValueOfNode = (is_object($node['value'])) ? '[complex value]' : $node['value'];
+                $valueOfAddedNode = checkString($typeOfValueOfNode) . PHP_EOL;
                 return "Property '" . $nestedProperty . $node['key'] . "' was added with value: " . $valueOfAddedNode;
             case 'removed':
                 return "Property '" . $nestedProperty . $node['key'] . "' was removed" . PHP_EOL;
             case 'changed':
                 $valueRemoved = $node['value']['valueRemoved'];
                 $valueAdded = $node['value']['valueAdd'];
-                $typeOfValueOfNode1 = (is_array($valueRemoved)) ? '[complex value]' : $valueRemoved;
-                $typeOfValueOfNode2 = (is_array($valueAdded)) ? '[complex value]' : $valueAdded;
-                $node1 = "From " . checkBoolean($typeOfValueOfNode1, 1);
-                $node2 = " to " . checkBoolean($typeOfValueOfNode2, 1) . PHP_EOL;
+                $typeOfValueOfNode1 = (is_object($valueRemoved)) ? '[complex value]' : $valueRemoved;
+                $typeOfValueOfNode2 = (is_object($valueAdded)) ? '[complex value]' : $valueAdded;
+                $node1 = "From " . checkString($typeOfValueOfNode1);
+                $node2 = " to " . checkString($typeOfValueOfNode2) . PHP_EOL;
                 return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $node1 . $node2;
-            case 'unchanged':
-                return "Property '" . $nestedProperty . $node['key'] . "' unchanged" . PHP_EOL;
         }
     }, $astTree);
 
     return implode("", $result);
+}
+
+function checkString($value)
+{
+    if ($value === '[complex value]') {
+        return $value;
+    }
+    return is_string($value) ? "'" . $value . "'" : checkBoolean($value, 1);
 }
