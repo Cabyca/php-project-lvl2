@@ -10,7 +10,7 @@ function checkBoolean($value, $plain = 0)
     if (is_null($value)) {
         return 'null';
     }
-    if ($plain === 1 && $value === '') {
+    if ($value === '' && $plain === 1) {
         return $value = "''";
     }
     if (!is_object($value)) {

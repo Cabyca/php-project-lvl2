@@ -18,19 +18,18 @@ function plain($astTree, $nestedProperty = '')
                 $nestedProperty .=  $node['key'] . ".";
                 return plain($node['children'], $nestedProperty);
             case 'added':
-                $typeOfValueOfNode = (is_object($node['value'])) ? '[complex value]' : $node['value'];
-                $valueOfAddedNode = checkString($typeOfValueOfNode) . PHP_EOL;
-                return "Property '" . $nestedProperty . $node['key'] . "' was added with value: " . $valueOfAddedNode;
+                $valueOfAddedNode = (is_object($node['value'])) ? '[complex value]' : checkString($node['value']);
+                return "Property '" . $nestedProperty . $node['key'] . "' was added with value: " . $valueOfAddedNode . PHP_EOL;
             case 'removed':
                 return "Property '" . $nestedProperty . $node['key'] . "' was removed" . PHP_EOL;
             case 'changed':
-                $valueRemoved = $node['value']['valueRemoved'];
-                $valueAdded = $node['value']['valueAdd'];
-                $typeOfValueOfNode1 = (is_object($valueRemoved)) ? '[complex value]' : $valueRemoved;
-                $typeOfValueOfNode2 = (is_object($valueAdded)) ? '[complex value]' : $valueAdded;
-                $node1 = "From " . checkString($typeOfValueOfNode1);
-                $node2 = " to " . checkString($typeOfValueOfNode2) . PHP_EOL;
-                return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $node1 . $node2;
+                $node1 = $node['value']['valueRemoved'];
+                $node2 = $node['value']['valueAdd'];
+                $valueRemoved = (is_object($node1)) ? '[complex value]' : checkString($node1);
+                $valueAdded = (is_object($node2)) ? '[complex value]' : checkString($node2);
+                $nodeRemoved = "From " . $valueRemoved;
+                $nodeAdded = " to " . $valueAdded . PHP_EOL;
+                return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $nodeRemoved . $nodeAdded;
         }
     }, $astTree);
 
@@ -39,8 +38,5 @@ function plain($astTree, $nestedProperty = '')
 
 function checkString($value)
 {
-    if ($value === '[complex value]') {
-        return $value;
-    }
-    return is_string($value) ? "'" . $value . "'" : checkBoolean($value, 1);
+    return is_string($value) ? "'{$value}'" : checkBoolean($value, 1);
 }
