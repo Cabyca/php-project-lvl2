@@ -18,8 +18,8 @@ function plain($astTree, $nestedProperty = '')
                 $nestedProperty .=  $node['key'] . ".";
                 return plain($node['children'], $nestedProperty);
             case 'added':
-                $valueOfAddedNode = (is_object($node['value'])) ? '[complex value]' : checkString($node['value']);
-                return "Property '" . $nestedProperty . $node['key'] . "' was added with value: " . $valueOfAddedNode . PHP_EOL;
+                $value = (is_object($node['value'])) ? '[complex value]' : checkString($node['value']);
+                return "Property '" . $nestedProperty . $node['key'] . "' was added with value: " . $value . PHP_EOL;
             case 'removed':
                 return "Property '" . $nestedProperty . $node['key'] . "' was removed" . PHP_EOL;
             case 'changed':
