@@ -2,8 +2,6 @@
 
 namespace Differ\Formatters\Plain;
 
-use function Differ\CheckBoolean\checkBoolean;
-
 function render($astTree)
 {
     return plain($astTree);
@@ -18,25 +16,39 @@ function plain($astTree, $nestedProperty = '')
                 $nestedProperty .=  $node['key'] . ".";
                 return plain($node['children'], $nestedProperty);
             case 'added':
-                $value = (is_object($node['value'])) ? '[complex value]' : checkString($node['value']);
-                return "Property '" . $nestedProperty . $node['key'] . "' was added with value: " . $value . PHP_EOL;
+                $valueAdd = stringify($node['value']);
+                return "Property '" . $nestedProperty . $node['key'] . "' was added with value: " . $valueAdd . PHP_EOL;
             case 'removed':
                 return "Property '" . $nestedProperty . $node['key'] . "' was removed" . PHP_EOL;
             case 'changed':
-                $node1 = $node['value']['valueRemoved'];
-                $node2 = $node['value']['valueAdd'];
-                $valueRemoved = (is_object($node1)) ? '[complex value]' : checkString($node1);
-                $valueAdded = (is_object($node2)) ? '[complex value]' : checkString($node2);
+                $valueRemoved = stringify($node['value']['valueRemoved']);
+                $valueAdd = stringify($node['value']['valueAdd']);
                 $nodeRemoved = "From " . $valueRemoved;
-                $nodeAdded = " to " . $valueAdded . PHP_EOL;
-                return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $nodeRemoved . $nodeAdded;
+                $nodeAdd = " to " . $valueAdd . PHP_EOL;
+                return "Property '" . $nestedProperty . $node['key'] . "' was updated. " . $nodeRemoved . $nodeAdd;
+            case 'unchanged':
+                return '';
+            default:
+                throw new \Exception("Unknown type: {$node['type']}");
         }
     }, $astTree);
 
     return implode("", $result);
 }
 
-function checkString($value)
+function stringify($value)
 {
-    return is_string($value) ? "'{$value}'" : checkBoolean($value, 1);
+    if (is_bool($value)) {
+        return $value ? 'true' : 'false';
+    }
+    if (is_null($value)) {
+        return 'null';
+    }
+    if (is_string($value)) {
+        return "'{$value}'";
+    }
+    if (is_object($value)) {
+        return '[complex value]';
+    }
+    return (string) $value;
 }

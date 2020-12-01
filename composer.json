@@ -24,7 +24,6 @@
       "src/Formatters/Stylish.php",
       "src/Formatters/Plain.php",
       "src/Formatters/Json.php",
-      "src/CheckBoolean.php",
       "src/GetData.php"
     ],
     "psr-4": {
